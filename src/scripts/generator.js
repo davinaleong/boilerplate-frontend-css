@@ -125,7 +125,8 @@ const initialCss = `
 `
 
 if (outputEl) {
-  const { colours, fontFamilies, fontSizes, fontWeights, sizes } = styles
+  const { colours, fontFamilies, fontSizes, fontWeights, sizes, positions } =
+    styles
 
   let html = initialCss
 
@@ -202,45 +203,6 @@ if (outputEl) {
   })
 
   sizes.forEach(function ({ key, min, max, otherValues }) {
-    // html += `
-    //   .size-${key}-m-0 {
-    //     margin-top: var(--size-${key}-0);
-    //     margin-bottom: var(--size-${key}-0);
-    //     margin-left: var(--size-${key}-0);
-    //     margin-right: var(--size-${key}-0);
-    //   }
-
-    //   .size-${key}-m-x-0 {
-    //     margin-left: var(--size-${key}-0);
-    //     margin-right: var(--size-${key}-0);
-    //   }
-
-    //   .size-${key}-m-y-0 {
-    //     margin-left: var(--size-${key}-0);
-    //     margin-right: var(--size-${key}-0);
-    //   }
-
-    //   .size-${key}-m-50 {
-    //     margin-top: var(--size-${key}-50);
-    //     margin-bottom: var(--size-${key}-50);
-    //     margin-left: var(--size-${key}-50);
-    //     margin-right: var(--size-${key}-50);
-    //   }
-
-    //   .size-${key}-p-0 {
-    //     padding-top: var(--size-${key}-0);
-    //     padding-bottom: var(--size-${key}-0);
-    //     padding-left: var(--size-${key}-0);
-    //     padding-right: var(--size-${key}-0);
-    //   }
-
-    //   .size-${key}-p-50 {
-    //     padding-top: var(--size-${key}-50);
-    //     padding-bottom: var(--size-${key}-50);
-    //     padding-left: var(--size-${key}-50);
-    //     padding-right: var(--size-${key}-50);
-    //   }
-    // `
     otherValues.forEach(function (otherValue) {
       const theVar = `var(--size-${key}-${otherValue.key})`
 
@@ -362,6 +324,22 @@ if (outputEl) {
         .p-${key}-block-end-${otherValue.key} {
           padding-block-end: ${theVar};
         }
+
+        .positioning-${key}-t-${otherValue.key} {
+          top: ${theVar};
+        }
+
+        .positioning-${key}-b-${otherValue.key} {
+          bottom: ${theVar};
+        }
+
+        .positioning-${key}-l-${otherValue.key} {
+          left: ${theVar};
+        }
+
+        .positioning-${key}-r-${otherValue.key} {
+          right: ${theVar};
+        }
       `
 
       if (otherValue.key !== "auto" && otherValue.key !== "0") {
@@ -423,6 +401,22 @@ if (outputEl) {
         
         .m-n-${key}-block-end-${otherValue.key} {
           margin-block-end: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-t-${otherValue.key} {
+          top: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-b-${otherValue.key} {
+          bottom: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-l-${otherValue.key} {
+          left: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-r-${otherValue.key} {
+          right: calc(${theVar} * -1);
         }
         `
       }
@@ -609,9 +603,49 @@ if (outputEl) {
         .m-n-${key}-block-end-${i} {
           margin-block-end: calc(${theVar} * -1);
         }
+
+        .positioning-${key}-t-${i} {
+          top: ${theVar};
+        }
+
+        .positioning-${key}-b-${i} {
+          bottom: ${theVar};
+        }
+
+        .positioning-${key}-l-${i} {
+          left: ${theVar};
+        }
+
+        .positioning-${key}-r-${i} {
+          right: ${theVar};
+        }
+
+        .positioning-n-${key}-t-${i} {
+          top: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-b-${i} {
+          bottom: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-l-${i} {
+          left: calc(${theVar} * -1);
+        }
+
+        .positioning-n-${key}-r-${i} {
+          right: calc(${theVar} * -1);
+        }
       `
       }
     }
+  })
+
+  positions.forEach(function ({ key }) {
+    html += `
+      .position-${key} {
+        position: ${key};
+      }
+    `
   })
 
   outputEl.innerHTML = html

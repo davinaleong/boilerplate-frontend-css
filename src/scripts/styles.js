@@ -156,4 +156,26 @@ const styles = {
       ],
     },
   ],
+  positions: [
+    {
+      key: "static",
+      value: "static",
+    },
+    {
+      key: "relative",
+      value: "relative",
+    },
+    {
+      key: "absolute",
+      value: "absolute",
+    },
+    {
+      key: "fixed",
+      value: "fixed",
+    },
+    {
+      key: "sticky",
+      value: "sticky",
+    },
+  ],
 }
