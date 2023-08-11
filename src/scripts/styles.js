@@ -6,21 +6,45 @@ const styles = {
       key: "primary",
       min: 0,
       max: 900,
+      otherValues: [
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
     },
     {
       key: "secondary",
       min: 0,
       max: 900,
+      otherValues: [
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
     },
     {
       key: "accent-1",
       min: 0,
       max: 900,
+      otherValues: [
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
     },
     {
       key: "gray",
       min: 0,
       max: 1000,
+      otherValues: [
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
     },
   ],
   fontFamilies: [
@@ -37,7 +61,23 @@ const styles = {
       value: "monospace",
     },
   ],
-  fontSizes: { min: 0, max: 900 },
+  fontSizes: [
+    {
+      key: "",
+      min: 0,
+      max: 900,
+      otherValues: [
+        {
+          key: "0",
+          value: "0",
+        },
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
+    },
+  ],
   fontWeights: [
     {
       key: "thin",
@@ -81,11 +121,39 @@ const styles = {
       key: "f",
       min: 0,
       max: 1000,
+      otherValues: [
+        {
+          key: "auto",
+          value: "auto",
+        },
+        {
+          key: "0",
+          value: "0",
+        },
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
     },
     {
       key: "v",
       min: 0,
       max: 1000,
+      otherValues: [
+        {
+          key: "auto",
+          value: "auto",
+        },
+        {
+          key: "0",
+          value: "0",
+        },
+        {
+          key: "50",
+          value: "50",
+        },
+      ],
     },
   ],
 }
