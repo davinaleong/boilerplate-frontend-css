@@ -1,0 +1,29 @@
+body {
+  font-size: var(--fz-400);
+  font-family: var(--ff-primary);
+}
+
+:focus {
+  outline: 3px solid var(--clr-accent-1-400);
+}
+
+a {
+  --a-clr: var(--clr-secondary-400);
+  --a-td: none;
+
+  --a-hover-clr: var(--clr-secondary-600);
+  --a-hover-td: none;
+
+  color: var(--a-clr);
+  text-decoration: var(--a-td);
+}
+
+a:hover {
+  color: var(--a-hover-clr);
+  text-decoration: var(--a-hover-td);
+}
+
+pre,
+code {
+  font-family: var(--ff-monospace);
+}
