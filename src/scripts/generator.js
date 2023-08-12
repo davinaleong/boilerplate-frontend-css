@@ -6,6 +6,8 @@ const dataElementAttr = `data-element`
 const outputEl = document.querySelector(`[${dataElementAttr}="output"]`)
 
 const initialCss = `
+/* Helpers */
+
 :root {
   --clr-primary-50: hsl(231, 44%, 94%);
   --clr-primary-100: hsl(232, 45%, 84%);
@@ -124,19 +126,22 @@ const initialCss = `
 .list-style-none {
   list-style: none;
 }
+
 `
 
 if (outputEl) {
   let html = initialCss
 
   styles.forEach(function ({ id, name, key, keys, min, max, value, values }) {
+    html += `/* ${name} Classes */`
+
     if (id === "clr" && keys.length > 0) {
       keys.forEach(function (key) {
         values.forEach(function (value) {
           value.values.forEach(function (valueValue) {
             html += `
-              .${key.key}-${value.key}-${valueValue.key} {
-                ${key.value}: var(--${id}-${value.key}-${valueValue.key});
+              .${key.id}-${value.id}-${valueValue.id} {
+                ${key.key}: var(--${id}-${value.key}-${valueValue.key});
               }
             `
           })
@@ -145,8 +150,8 @@ if (outputEl) {
             for (let i = STEP; i <= value.max; ++i) {
               if (i % STEP === 0) {
                 html += `
-                  .${key.key}-${value.key}-${i} {
-                    ${key.value}: var(--${id}-${value.key}-${i});
+                  .${key.id}-${value.id}-${i} {
+                    ${key.key}: var(--${id}-${value.key}-${i});
                   }
                 `
               }
@@ -154,6 +159,28 @@ if (outputEl) {
           }
         })
       })
+    } else {
+      if (values.length > 0) {
+        values.forEach(function (value) {
+          html += `
+            .${id}-${value.id} {
+              ${key}: var(${id}-${value.id});
+            }
+          `
+        })
+      }
+
+      if (max > min) {
+        for (let i = STEP; i <= max; ++i) {
+          if (i % STEP === 0) {
+            html += `
+              .${id}-${i} {
+                ${key}: var(--${id}-${i});
+              }
+            `
+          }
+        }
+      }
     }
   })
 
