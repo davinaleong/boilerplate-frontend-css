@@ -1,5 +1,7 @@
 console.log(`generator.js loaded`)
 
+const STEP = 100
+
 const dataElementAttr = `data-element`
 const outputEl = document.querySelector(`[${dataElementAttr}="output"]`)
 
@@ -128,10 +130,28 @@ if (outputEl) {
   let html = initialCss
 
   styles.forEach(function ({ id, name, key, keys, min, max, value, values }) {
-    if (id === "clr") {
+    if (id === "clr" && keys.length > 0) {
       keys.forEach(function (key) {
         values.forEach(function (value) {
-          //
+          value.values.forEach(function (valueValue) {
+            html += `
+              .${key.key}-${value.key}-${valueValue.key} {
+                ${key.value}: var(--${id}-${value.key}-${valueValue.key});
+              }
+            `
+          })
+
+          if (value.max > value.min) {
+            for (let i = STEP; i <= value.max; ++i) {
+              if (i % STEP === 0) {
+                html += `
+                  .${key.key}-${value.key}-${i} {
+                    ${key.value}: var(--${id}-${value.key}-${i});
+                  }
+                `
+              }
+            }
+          }
         })
       })
     }

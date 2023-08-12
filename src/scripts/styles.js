@@ -5,7 +5,21 @@ const styles = [
     id: "clr",
     name: "Colours",
     key: "",
-    keys: ["clr", "bg", "fill"],
+    keys: ["text", "bg", "fill"],
+    keys: [
+      {
+        key: "text",
+        value: "color",
+      },
+      {
+        key: "bg",
+        value: "background-color",
+      },
+      {
+        key: "fill",
+        value: "fill",
+      },
+    ],
     min: 0,
     max: 0,
     value: "",
