@@ -132,7 +132,17 @@ const initialCss = `
 if (outputEl) {
   let html = initialCss
 
-  styles.forEach(function ({ id, name, key, keys, min, max, value, values }) {
+  styles.forEach(function ({
+    id,
+    name,
+    key,
+    keys,
+    min,
+    max,
+    useVar,
+    value,
+    values,
+  }) {
     html += `/* ${name} Classes */`
 
     if (id === "clr" && keys.length > 0) {
@@ -264,9 +274,11 @@ if (outputEl) {
     } else {
       if (values.length > 0) {
         values.forEach(function (value) {
+          const valueHtml = useVar ? `var(--${id}-${value.id})` : value.key
+
           html += `
             .${id}-${value.id} {
-              ${key}: var(--${id}-${value.id});
+              ${key}: ${valueHtml};
             }
           `
         })
