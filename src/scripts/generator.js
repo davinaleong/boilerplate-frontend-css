@@ -140,7 +140,7 @@ if (outputEl) {
         values.forEach(function (value) {
           value.values.forEach(function (valueValue) {
             html += `
-              .${key.id}-${value.id}-${valueValue.id} {
+              .${key.id}-${value.key}-${valueValue.id} {
                 ${key.key}: var(--${id}-${value.key}-${valueValue.key});
               }
             `
@@ -150,7 +150,7 @@ if (outputEl) {
             for (let i = STEP; i <= value.max; ++i) {
               if (i % STEP === 0) {
                 html += `
-                  .${key.id}-${value.id}-${i} {
+                  .${key.id}-${value.key}-${i} {
                     ${key.key}: var(--${id}-${value.key}-${i});
                   }
                 `
@@ -159,12 +159,114 @@ if (outputEl) {
           }
         })
       })
+    } else if ((id === "f" || id === "v") && max > min) {
+      keys.forEach(function (keyKey) {
+        if (values.length > 0) {
+          values.forEach(function (value) {
+            html += `
+              .${keyKey.id}-${id}-${value.id} {
+                ${keyKey.key}-left: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-right: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-top: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-bottom: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-x-${value.id} {
+                ${keyKey.key}-left: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-right: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-y-${value.id} {
+                ${keyKey.key}-top: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-bottom: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-inline-${value.id} {
+                ${keyKey.key}-inline-start: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-inline-end: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-block-${value.id} {
+                ${keyKey.key}-block-start: var(--${key}-${id}-${value.id});
+                ${keyKey.key}-block-end: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-l-${value.id} {
+                ${keyKey.key}-left: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-r-${value.id} {
+                ${keyKey.key}-right: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-t-${value.id} {
+                ${keyKey.key}-top: var(--${key}-${id}-${value.id});
+              }
+
+              .${keyKey.id}-${id}-b-${value.id} {
+                ${keyKey.key}-bottom: var(--${key}-${id}-${value.id});
+              }
+            `
+          })
+        }
+
+        if (max > min) {
+          for (let i = STEP; i <= max; ++i) {
+            if (i % STEP === 0) {
+              html += `
+              .${keyKey.id}-${id}-${i} {
+                ${keyKey.key}-left: var(--${key}-${id}-${i});
+                ${keyKey.key}-right: var(--${key}-${id}-${i});
+                ${keyKey.key}-top: var(--${key}-${id}-${i});
+                ${keyKey.key}-bottom: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-x-${i} {
+                ${keyKey.key}-left: var(--${key}-${id}-${i});
+                ${keyKey.key}-right: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-y-${i} {
+                ${keyKey.key}-top: var(--${key}-${id}-${i});
+                ${keyKey.key}-bottom: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-inline-${i} {
+                ${keyKey.key}-inline-start: var(--${key}-${id}-${i});
+                ${keyKey.key}-inline-end: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-block-${i} {
+                ${keyKey.key}-block-start: var(--${key}-${id}-${i});
+                ${keyKey.key}-block-end: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-l-${i} {
+                ${keyKey.key}-left: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-r-${i} {
+                ${keyKey.key}-right: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-t-${i} {
+                ${keyKey.key}-top: var(--${key}-${id}-${i});
+              }
+
+              .${keyKey.id}-${id}-b-${i} {
+                ${keyKey.key}-bottom: var(--${key}-${id}-${i});
+              }
+            `
+            }
+          }
+        }
+      })
     } else {
       if (values.length > 0) {
         values.forEach(function (value) {
           html += `
             .${id}-${value.id} {
-              ${key}: var(${id}-${value.id});
+              ${key}: var(--${id}-${value.id});
             }
           `
         })
