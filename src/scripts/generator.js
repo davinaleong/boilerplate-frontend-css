@@ -127,6 +127,11 @@ const initialCss = `
   list-style: none;
 }
 
+.flow > * + * {
+  --flow-spacer: var(--size-v-400);
+
+  margin-top: var(--flow-spacer);
+}
 `
 
 if (outputEl) {

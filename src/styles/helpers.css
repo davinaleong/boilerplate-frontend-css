@@ -119,6 +119,12 @@
   list-style: none;
 }
 
+.flow > * + * {
+  --flow-spacer: var(--size-v-400);
+
+  margin-top: var(--flow-spacer);
+}
+
 /* Colours Classes */
 .text-primary-50 {
   color: var(--clr-primary-50);

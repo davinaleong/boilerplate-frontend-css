@@ -27,3 +27,12 @@ pre,
 code {
   font-family: var(--ff-monospace);
 }
+
+strong,
+b {
+  font-weight: var(--fw-bold);
+}
+
+em {
+  font-weight: var(--fs-italic);
+}
