@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bolierplate - Frontend CSS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="./src/assets/images/logo.svg" />
+
+    <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="stylesheet" href="./src/styles/app.css" />
+    <link rel="stylesheet" href="./src/styles/helpers.css" />
+
+    <script defer src="./src/scripts/styles.js"></script>
+    <script defer src="./src/scripts/sample.js"></script>
+  </head>
+  <body class="wrapper m-v-x-auto flow">
+    <h1 class="fz-700 ff-secondary">Boilerplate Frontend CSS - Sample</h1>
+
+    <div data-element="tabbed-content">
+      <ul class="display-flex justify-content-stretch" data-element="tabs">
+        <li class="width-100">
+          <a
+            class="btn display-flex justify-content-center"
+            href="#"
+            data-active="true"
+            data-target="#elements"
+            >Elements</a
+          >
+        </li>
+        <li class="width-100">
+          <a
+            class="btn display-flex justify-content-center"
+            href="#"
+            data-target="#classes"
+            >Classes</a
+          >
+        </li>
+      </ul>
+
+      <div data-element="tab-content">
+        <div class="flow" id="elements" data-active="true">
+          <h2 class="fz-600 ff-secondary">Elements</h2>
+        </div>
+
+        <div class="flow" id="classes">
+          <h2 class="fz-600 ff-secondary">Classes</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
