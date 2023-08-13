@@ -114,6 +114,10 @@ body {
   outline: 3px solid var(--clr-accent-1-400);
 }
 
+[data-active="true"] {
+  outline: 3px solid var(--clr-secondary-400);
+}
+
 a {
   --_a-clr: var(--clr-secondary-400);
   --_a-td: none;
@@ -183,6 +187,7 @@ em {
   padding-bottom: var(--_btn-spacer-x);
   padding-left: var(--_btn-spacer-y);
   padding-right: var(--_btn-spacer-y);
+  cursor: pointer;
 
   color: var(--_btn-clr);
   background-color: var(--_btn-bg-clr);
