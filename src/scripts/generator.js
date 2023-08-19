@@ -58,5 +58,54 @@ ol.list {
 if (outputEl) {
   let html = initialCss
 
+  styles.forEach(function (style, styleIndex) {
+    html += `/* ${styleIndex + 1}. ${style.name} Styles */
+    `
+
+    style.properties.forEach(function (property) {
+      if (style.max > style.min) {
+        for (let i = style.min; i <= style.max; ++i) {
+          if (i % STEP === 0) {
+            html += `
+              .${style.key}-${i} {
+                ${property.value}: var(--${style.key}-${i});
+              }
+            `
+          }
+        }
+      }
+
+      style.values.forEach(function (value, valueIndex) {
+        html += `/* ${styleIndex + 1}.${valueIndex + 1}. ${value.name} ${
+          style.name
+        } */
+        `
+
+        if (value.max > value.min) {
+          for (let i = value.min; i <= value.max; ++i) {
+            if (i % STEP === 0) {
+              html += `
+                .${property.key}-${value.key}-${i} {
+                  ${property.value}: var(--${style.key}-${value.key}-${i});
+                }
+              `
+            }
+          }
+        }
+
+        if (value.value !== "") {
+          const val = style.useVar
+            ? `var(--${style.key}-${value.key})`
+            : value.value
+          html += `
+            .${property.key}-${value.key} {
+              ${property.value}: ${val};
+            }
+          `
+        }
+      })
+    })
+  })
+
   outputEl.innerHTML = html
 }
